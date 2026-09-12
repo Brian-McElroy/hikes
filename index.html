@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hikes</title>
+<style>
+  :root {
+    --bg: #111;
+    --fg: #eee;
+    --gap: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  header {
+    padding: 24px 20px 8px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  .count {
+    color: #999;
+    font-size: 0.9rem;
+    margin-top: 4px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--gap);
+    padding: 20px;
+  }
+  .grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    background: #222;
+    transition: transform 0.15s ease;
+  }
+  .grid img:hover {
+    transform: scale(1.03);
+  }
+  .missing {
+    padding: 40px 20px;
+    color: #999;
+    line-height: 1.6;
+  }
+  .missing code {
+    background: #222;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox.open {
+    display: flex;
+  }
+  .lightbox img {
+    max-width: 100vw;
+    max-height: 100vh;
+    object-fit: contain;
+  }
+  .lb-btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15%;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+    z-index: 2;
+  }
+  .lb-btn:hover { opacity: 1; }
+  .lb-prev { left: 0; }
+  .lb-next { right: 0; }
+  .lb-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    opacity: 0.9;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Hikes</h1>
+  <div class="count" id="count"></div>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-btn lb-close" id="lbClose">&times;</button>
+  <button class="lb-btn lb-prev" id="lbPrev">&#10094;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-btn lb-next" id="lbNext">&#10095;</button>
+</div>
+
+<script>
+// ---- ADD YOUR PHOTOS HERE ----
+// Just add the filename of each photo you drop in this folder.
+// Any order is fine, this is the order they'll show up in.
+const photos = [
+  "20260910_201546.jpg", 
+  "20260911_123219.jpg", 
+  "20260911_132542.jpg", 
+  "IMG_20260911_113235.jpg", 
+  "IMG_20260911_121730.jpg", 
+];
+// -------------------------------
+
+const grid = document.getElementById('grid');
+const countEl = document.getElementById('count');
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+let current = 0;
+
+if (photos.length === 0) {
+  grid.innerHTML = '';
+  document.querySelector('header').insertAdjacentHTML('afterend', `
+    <div class="missing">
+      No photos listed yet. Open <code>index.html</code>, find the
+      <code>photos</code> list near the bottom of the script, and add
+      your filenames there, e.g. <code>"trail-summit.jpeg"</code>.
+    </div>
+  `);
+} else {
+  countEl.textContent = photos.length + (photos.length === 1 ? ' photo' : ' photos');
+  photos.forEach((file, i) => {
+    const img = document.createElement('img');
+    img.src = file;
+    img.loading = 'lazy';
+    img.alt = file;
+    img.addEventListener('click', () => openLightbox(i));
+    grid.appendChild(img);
+  });
+}
+
+function openLightbox(i) {
+  current = i;
+  showPhoto();
+  lightbox.classList.add('open');
+}
+
+function showPhoto() {
+  lbImg.src = photos[current];
+}
+
+function next() {
+  current = (current + 1) % photos.length;
+  showPhoto();
+}
+
+function prev() {
+  current = (current - 1 + photos.length) % photos.length;
+  showPhoto();
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+}
+
+document.getElementById('lbNext').addEventListener('click', next);
+document.getElementById('lbPrev').addEventListener('click', prev);
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'ArrowLeft') prev();
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>
