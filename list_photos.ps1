@@ -13,7 +13,7 @@ foreach ($d in $dirs) {
     $lines += "  {"
     $lines += "    title: `"$($d.Name)`","
     $lines += "    photos: ["
-    Get-ChildItem $d.Name -Filter *.jpg | ForEach-Object {
+    Get-ChildItem $d.Name -Filter *.jpg | Sort-Object LastWriteTime | ForEach-Object {
         $lines += "      `"$($d.Name)/$($_.Name)`","
     }
     $lines += "    ]"
