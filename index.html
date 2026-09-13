@@ -134,7 +134,7 @@ if (hikes.length === 0) {
       No hikes listed yet. Open <code>index.html</code>, find the
       <code>hikes</code> list near the bottom of the script, and add
       an entry for each folder of photos, e.g.
-      <code>{ title: "Slieve Donard", photos: ["Slieve Donard/1.jpg"] }</code>.
+      <code>{ title: "Slieve Donard", photos: [{ full: "Slieve Donard/1.jpg", thumb: "Slieve Donard/thumbs/1.jpg" }] }</code>.
     </div>
   `;
 } else {
@@ -147,11 +147,11 @@ if (hikes.length === 0) {
 
     const grid = document.createElement('div');
     grid.className = 'grid';
-    hike.photos.forEach((file, pIndex) => {
+    hike.photos.forEach((photo, pIndex) => {
       const img = document.createElement('img');
-      img.src = file;
+      img.src = photo.thumb;
       img.loading = 'lazy';
-      img.alt = file;
+      img.alt = hike.title;
       img.addEventListener('click', () => openLightbox(hIndex, pIndex));
       grid.appendChild(img);
     });
@@ -169,7 +169,7 @@ function openLightbox(hIndex, pIndex) {
 }
 
 function showPhoto() {
-  lbImg.src = hikes[currentHike].photos[currentPhoto];
+  lbImg.src = hikes[currentHike].photos[currentPhoto].full;
 }
 
 function next() {
