@@ -6,6 +6,19 @@ function New-Thumbnail {
     param($SourcePath, $DestPath)
     $img = [System.Drawing.Image]::FromFile($SourcePath)
     try {
+        if ($img.PropertyIdList -contains 0x0112) {
+            $orientation = $img.GetPropertyItem(0x0112).Value[0]
+            switch ($orientation) {
+                2 { $img.RotateFlip([System.Drawing.RotateFlipType]::RotateNoneFlipX) }
+                3 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate180FlipNone) }
+                4 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate180FlipX) }
+                5 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate90FlipX) }
+                6 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate90FlipNone) }
+                7 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate270FlipX) }
+                8 { $img.RotateFlip([System.Drawing.RotateFlipType]::Rotate270FlipNone) }
+            }
+        }
+
         $ratio = $thumbWidth / $img.Width
         if ($ratio -gt 1) { $ratio = 1 }
         $newWidth = [int]($img.Width * $ratio)
