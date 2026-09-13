@@ -21,6 +21,69 @@ const hikes = [
     ]
   },
   {
+    title: "Mahon Falls 2026 2",
+    photos: [
+      "Mahon Falls 2026 2/20260726_111903.jpg",
+      "Mahon Falls 2026 2/IMG_20260726_140220.jpg",
+      "Mahon Falls 2026 2/IMG_20260726_140711.jpg",
+      "Mahon Falls 2026 2/IMG_20260726_152033.jpg",
+      "Mahon Falls 2026 2/IMG_20260726_152356.jpg",
+    ]
+  },
+  {
+    title: "Mahon Falls 2026 1",
+    photos: [
+      "Mahon Falls 2026 1/20260614_162547.jpg",
+      "Mahon Falls 2026 1/IMG_20260614_141637.jpg",
+      "Mahon Falls 2026 1/IMG_20260614_151552.jpg",
+      "Mahon Falls 2026 1/IMG_20260614_153741.jpg",
+    ]
+  },
+  {
+    title: "Coumshingaun 2025",
+    photos: [
+      "Coumshingaun 2025/20260405_124642.jpg",
+      "Coumshingaun 2025/20260405_125311.jpg",
+      "Coumshingaun 2025/20260405_132209.jpg",
+      "Coumshingaun 2025/20260405_132408.jpg",
+    ]
+  },
+  {
+    title: "Seefin 2026",
+    photos: [
+      "Seefin 2026/20251025_130645.jpg",
+      "Seefin 2026/IMG_20251025_140433.jpg",
+      "Seefin 2026/IMG_20251025_140519.jpg",
+      "Seefin 2026/IMG_20251025_143829.jpg",
+      "Seefin 2026/IMG_20251025_144304.jpg",
+    ]
+  },
+  {
+    title: "Achill 2025",
+    photos: [
+      "Achill 2025/20250829_130852.jpg",
+      "Achill 2025/20250829_155402.jpg",
+      "Achill 2025/20250829_161041.jpg",
+      "Achill 2025/IMG_20250828_212842.jpg",
+      "Achill 2025/IMG_20250829_145812.jpg",
+      "Achill 2025/IMG_20250829_154833.jpg",
+      "Achill 2025/IMG_20250829_172842.jpg",
+      "Achill 2025/IMG_20250829_174701.jpg",
+    ]
+  },
+  {
+    title: "Mournes 2025",
+    photos: [
+      "Mournes 2025/20250522_144010.jpg",
+      "Mournes 2025/20250522_145608.jpg",
+      "Mournes 2025/20250522_150147.jpg",
+      "Mournes 2025/20250522_150555.jpg",
+      "Mournes 2025/20250522_150943.jpg",
+      "Mournes 2025/IMG_20250522_153750.jpg",
+      "Mournes 2025/IMG_20250522_160427.jpg",
+    ]
+  },
+  {
     title: "Mweelrea 2025",
     photos: [
       "Mweelrea 2025/20250410_125017.jpg",
@@ -28,6 +91,15 @@ const hikes = [
       "Mweelrea 2025/IMG_20250410_145527.jpg",
       "Mweelrea 2025/IMG_20250410_155507.jpg",
       "Mweelrea 2025/IMG_20250410_160832.jpg",
+    ]
+  },
+  {
+    title: "Tonduff 2025",
+    photos: [
+      "Tonduff 2025/20250202_124135.jpg",
+      "Tonduff 2025/IMG_20250202_124619.jpg",
+      "Tonduff 2025/IMG_20250202_130200.jpg",
+      "Tonduff 2025/IMG_20250202_150124.jpg",
     ]
   },
   {
