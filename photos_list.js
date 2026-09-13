@@ -3,40 +3,40 @@ const hikes = [
     title: "Dingle 2026",
     photos: [
       { full: "Dingle 2026/20260910_201546.jpg", thumb: "Dingle 2026/thumbs/20260910_201546.jpg" },
+      { full: "Dingle 2026/IMG_20260911_113235.jpg", thumb: "Dingle 2026/thumbs/IMG_20260911_113235.jpg" },
+      { full: "Dingle 2026/IMG_20260911_121730.jpg", thumb: "Dingle 2026/thumbs/IMG_20260911_121730.jpg" },
       { full: "Dingle 2026/20260911_123219.jpg", thumb: "Dingle 2026/thumbs/20260911_123219.jpg" },
       { full: "Dingle 2026/20260911_132542.jpg", thumb: "Dingle 2026/thumbs/20260911_132542.jpg" },
-      { full: "Dingle 2026/IMG_20260911_121730.jpg", thumb: "Dingle 2026/thumbs/IMG_20260911_121730.jpg" },
-      { full: "Dingle 2026/IMG_20260911_113235.jpg", thumb: "Dingle 2026/thumbs/IMG_20260911_113235.jpg" },
     ]
   },
   {
     title: "Mweelrea 2026",
     photos: [
-      { full: "Mweelrea 2026/20260829_175515.jpg", thumb: "Mweelrea 2026/thumbs/20260829_175515.jpg" },
-      { full: "Mweelrea 2026/20260829_175609.jpg", thumb: "Mweelrea 2026/thumbs/20260829_175609.jpg" },
-      { full: "Mweelrea 2026/IMG_20260829_174825.jpg", thumb: "Mweelrea 2026/thumbs/IMG_20260829_174825.jpg" },
       { full: "Mweelrea 2026/000.jpg", thumb: "Mweelrea 2026/thumbs/000.jpg" },
       { full: "Mweelrea 2026/001.jpg", thumb: "Mweelrea 2026/thumbs/001.jpg" },
       { full: "Mweelrea 2026/003.jpg", thumb: "Mweelrea 2026/thumbs/003.jpg" },
+      { full: "Mweelrea 2026/IMG_20260829_174825.jpg", thumb: "Mweelrea 2026/thumbs/IMG_20260829_174825.jpg" },
+      { full: "Mweelrea 2026/20260829_175515.jpg", thumb: "Mweelrea 2026/thumbs/20260829_175515.jpg" },
+      { full: "Mweelrea 2026/20260829_175609.jpg", thumb: "Mweelrea 2026/thumbs/20260829_175609.jpg" },
     ]
   },
   {
     title: "Mahon Falls 2026 2",
     photos: [
       { full: "Mahon Falls 2026 2/20260726_111903.jpg", thumb: "Mahon Falls 2026 2/thumbs/20260726_111903.jpg" },
-      { full: "Mahon Falls 2026 2/IMG_20260726_152033.jpg", thumb: "Mahon Falls 2026 2/thumbs/IMG_20260726_152033.jpg" },
-      { full: "Mahon Falls 2026 2/IMG_20260726_152356.jpg", thumb: "Mahon Falls 2026 2/thumbs/IMG_20260726_152356.jpg" },
       { full: "Mahon Falls 2026 2/IMG_20260726_140220.jpg", thumb: "Mahon Falls 2026 2/thumbs/IMG_20260726_140220.jpg" },
       { full: "Mahon Falls 2026 2/IMG_20260726_140711.jpg", thumb: "Mahon Falls 2026 2/thumbs/IMG_20260726_140711.jpg" },
+      { full: "Mahon Falls 2026 2/IMG_20260726_152033.jpg", thumb: "Mahon Falls 2026 2/thumbs/IMG_20260726_152033.jpg" },
+      { full: "Mahon Falls 2026 2/IMG_20260726_152356.jpg", thumb: "Mahon Falls 2026 2/thumbs/IMG_20260726_152356.jpg" },
     ]
   },
   {
     title: "Mahon Falls 2026 1",
     photos: [
-      { full: "Mahon Falls 2026 1/20260614_162547.jpg", thumb: "Mahon Falls 2026 1/thumbs/20260614_162547.jpg" },
-      { full: "Mahon Falls 2026 1/IMG_20260614_153741.jpg", thumb: "Mahon Falls 2026 1/thumbs/IMG_20260614_153741.jpg" },
-      { full: "Mahon Falls 2026 1/IMG_20260614_151552.jpg", thumb: "Mahon Falls 2026 1/thumbs/IMG_20260614_151552.jpg" },
       { full: "Mahon Falls 2026 1/IMG_20260614_141637.jpg", thumb: "Mahon Falls 2026 1/thumbs/IMG_20260614_141637.jpg" },
+      { full: "Mahon Falls 2026 1/IMG_20260614_151552.jpg", thumb: "Mahon Falls 2026 1/thumbs/IMG_20260614_151552.jpg" },
+      { full: "Mahon Falls 2026 1/IMG_20260614_153741.jpg", thumb: "Mahon Falls 2026 1/thumbs/IMG_20260614_153741.jpg" },
+      { full: "Mahon Falls 2026 1/20260614_162547.jpg", thumb: "Mahon Falls 2026 1/thumbs/20260614_162547.jpg" },
     ]
   },
   {
@@ -52,23 +52,23 @@ const hikes = [
     title: "Seefin 2026",
     photos: [
       { full: "Seefin 2026/20251025_130645.jpg", thumb: "Seefin 2026/thumbs/20251025_130645.jpg" },
-      { full: "Seefin 2026/IMG_20251025_143829.jpg", thumb: "Seefin 2026/thumbs/IMG_20251025_143829.jpg" },
-      { full: "Seefin 2026/IMG_20251025_144304.jpg", thumb: "Seefin 2026/thumbs/IMG_20251025_144304.jpg" },
       { full: "Seefin 2026/IMG_20251025_140433.jpg", thumb: "Seefin 2026/thumbs/IMG_20251025_140433.jpg" },
       { full: "Seefin 2026/IMG_20251025_140519.jpg", thumb: "Seefin 2026/thumbs/IMG_20251025_140519.jpg" },
+      { full: "Seefin 2026/IMG_20251025_143829.jpg", thumb: "Seefin 2026/thumbs/IMG_20251025_143829.jpg" },
+      { full: "Seefin 2026/IMG_20251025_144304.jpg", thumb: "Seefin 2026/thumbs/IMG_20251025_144304.jpg" },
     ]
   },
   {
     title: "Achill 2025",
     photos: [
+      { full: "Achill 2025/IMG_20250828_212842.jpg", thumb: "Achill 2025/thumbs/IMG_20250828_212842.jpg" },
       { full: "Achill 2025/20250829_130852.jpg", thumb: "Achill 2025/thumbs/20250829_130852.jpg" },
+      { full: "Achill 2025/IMG_20250829_145812.jpg", thumb: "Achill 2025/thumbs/IMG_20250829_145812.jpg" },
+      { full: "Achill 2025/IMG_20250829_154833.jpg", thumb: "Achill 2025/thumbs/IMG_20250829_154833.jpg" },
       { full: "Achill 2025/20250829_155402.jpg", thumb: "Achill 2025/thumbs/20250829_155402.jpg" },
       { full: "Achill 2025/20250829_161041.jpg", thumb: "Achill 2025/thumbs/20250829_161041.jpg" },
       { full: "Achill 2025/IMG_20250829_172842.jpg", thumb: "Achill 2025/thumbs/IMG_20250829_172842.jpg" },
       { full: "Achill 2025/IMG_20250829_174701.jpg", thumb: "Achill 2025/thumbs/IMG_20250829_174701.jpg" },
-      { full: "Achill 2025/IMG_20250829_154833.jpg", thumb: "Achill 2025/thumbs/IMG_20250829_154833.jpg" },
-      { full: "Achill 2025/IMG_20250828_212842.jpg", thumb: "Achill 2025/thumbs/IMG_20250828_212842.jpg" },
-      { full: "Achill 2025/IMG_20250829_145812.jpg", thumb: "Achill 2025/thumbs/IMG_20250829_145812.jpg" },
     ]
   },
   {
@@ -79,27 +79,27 @@ const hikes = [
       { full: "Mournes 2025/20250522_150147.jpg", thumb: "Mournes 2025/thumbs/20250522_150147.jpg" },
       { full: "Mournes 2025/20250522_150555.jpg", thumb: "Mournes 2025/thumbs/20250522_150555.jpg" },
       { full: "Mournes 2025/20250522_150943.jpg", thumb: "Mournes 2025/thumbs/20250522_150943.jpg" },
-      { full: "Mournes 2025/IMG_20250522_160427.jpg", thumb: "Mournes 2025/thumbs/IMG_20250522_160427.jpg" },
       { full: "Mournes 2025/IMG_20250522_153750.jpg", thumb: "Mournes 2025/thumbs/IMG_20250522_153750.jpg" },
+      { full: "Mournes 2025/IMG_20250522_160427.jpg", thumb: "Mournes 2025/thumbs/IMG_20250522_160427.jpg" },
     ]
   },
   {
     title: "Mweelrea 2025",
     photos: [
       { full: "Mweelrea 2025/20250410_125017.jpg", thumb: "Mweelrea 2025/thumbs/20250410_125017.jpg" },
+      { full: "Mweelrea 2025/IMG_20250410_145527.jpg", thumb: "Mweelrea 2025/thumbs/IMG_20250410_145527.jpg" },
+      { full: "Mweelrea 2025/Brian McElroy 2025.jpg", thumb: "Mweelrea 2025/thumbs/Brian McElroy 2025.jpg" },
       { full: "Mweelrea 2025/IMG_20250410_155507.jpg", thumb: "Mweelrea 2025/thumbs/IMG_20250410_155507.jpg" },
       { full: "Mweelrea 2025/IMG_20250410_160832.jpg", thumb: "Mweelrea 2025/thumbs/IMG_20250410_160832.jpg" },
-      { full: "Mweelrea 2025/Brian McElroy 2025.jpg", thumb: "Mweelrea 2025/thumbs/Brian McElroy 2025.jpg" },
-      { full: "Mweelrea 2025/IMG_20250410_145527.jpg", thumb: "Mweelrea 2025/thumbs/IMG_20250410_145527.jpg" },
     ]
   },
   {
     title: "Tonduff 2025",
     photos: [
       { full: "Tonduff 2025/20250202_124135.jpg", thumb: "Tonduff 2025/thumbs/20250202_124135.jpg" },
-      { full: "Tonduff 2025/IMG_20250202_150124.jpg", thumb: "Tonduff 2025/thumbs/IMG_20250202_150124.jpg" },
-      { full: "Tonduff 2025/IMG_20250202_130200.jpg", thumb: "Tonduff 2025/thumbs/IMG_20250202_130200.jpg" },
       { full: "Tonduff 2025/IMG_20250202_124619.jpg", thumb: "Tonduff 2025/thumbs/IMG_20250202_124619.jpg" },
+      { full: "Tonduff 2025/IMG_20250202_130200.jpg", thumb: "Tonduff 2025/thumbs/IMG_20250202_130200.jpg" },
+      { full: "Tonduff 2025/IMG_20250202_150124.jpg", thumb: "Tonduff 2025/thumbs/IMG_20250202_150124.jpg" },
     ]
   },
   {

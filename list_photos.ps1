@@ -2,6 +2,23 @@ Add-Type -AssemblyName System.Drawing
 
 $thumbWidth = 400
 
+function Get-DateTaken {
+    param($Path)
+    try {
+        $img = [System.Drawing.Image]::FromFile($Path)
+        try {
+            if ($img.PropertyIdList -contains 0x9003) {
+                $bytes = $img.GetPropertyItem(0x9003).Value
+                $str = [System.Text.Encoding]::ASCII.GetString($bytes).TrimEnd([char]0)
+                return [datetime]::ParseExact($str, "yyyy:MM:dd HH:mm:ss", $null)
+            }
+        } finally {
+            $img.Dispose()
+        }
+    } catch {}
+    return (Get-Item $Path).LastWriteTime
+}
+
 function New-Thumbnail {
     param($SourcePath, $DestPath)
     $img = [System.Drawing.Image]::FromFile($SourcePath)
@@ -38,35 +55,43 @@ function New-Thumbnail {
     }
 }
 
-$dirs = Get-ChildItem -Directory | Where-Object { $_.Name -ne "thumbs" } | ForEach-Object {
+# Build each hike's photo list (with date taken) once, reuse for both
+# photo ordering within the hike and hike ordering on the page.
+$hikeData = Get-ChildItem -Directory | Where-Object { $_.Name -ne "thumbs" } | ForEach-Object {
     $folder = $_
-    $latest = Get-ChildItem $folder.FullName -Filter *.jpg | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+    $photos = Get-ChildItem $folder.FullName -Filter *.jpg | ForEach-Object {
+        [PSCustomObject]@{ File = $_; Date = Get-DateTaken $_.FullName }
+    } | Sort-Object Date
+
+    $latestDate = if ($photos) { ($photos.Date | Sort-Object -Descending | Select-Object -First 1) } else { [datetime]::MinValue }
+
     [PSCustomObject]@{
         Name = $folder.Name
-        Date = if ($latest) { $latest.LastWriteTime } else { [datetime]::MinValue }
+        Photos = $photos
+        Date = $latestDate
     }
 } | Sort-Object Date -Descending
 
 $lines = @()
 $lines += "const hikes = ["
-foreach ($d in $dirs) {
-    $thumbsDir = Join-Path $d.Name "thumbs"
+foreach ($hike in $hikeData) {
+    $thumbsDir = Join-Path $hike.Name "thumbs"
     if (-not (Test-Path $thumbsDir)) {
         New-Item -ItemType Directory -Path $thumbsDir | Out-Null
     }
 
     $lines += "  {"
-    $lines += "    title: `"$($d.Name)`","
+    $lines += "    title: `"$($hike.Name)`","
     $lines += "    photos: ["
-    Get-ChildItem $d.Name -Filter *.jpg | Sort-Object LastWriteTime | ForEach-Object {
-        $sourceFile = $_
+    foreach ($p in $hike.Photos) {
+        $sourceFile = $p.File
         $thumbPath = Join-Path $thumbsDir $sourceFile.Name
 
         if ((-not (Test-Path $thumbPath)) -or ((Get-Item $thumbPath).LastWriteTime -lt $sourceFile.LastWriteTime)) {
             New-Thumbnail -SourcePath $sourceFile.FullName -DestPath $thumbPath
         }
 
-        $lines += "      { full: `"$($d.Name)/$($sourceFile.Name)`", thumb: `"$($d.Name)/thumbs/$($sourceFile.Name)`" },"
+        $lines += "      { full: `"$($hike.Name)/$($sourceFile.Name)`", thumb: `"$($hike.Name)/thumbs/$($sourceFile.Name)`" },"
     }
     $lines += "    ]"
     $lines += "  },"
@@ -74,4 +99,4 @@ foreach ($d in $dirs) {
 $lines += "];"
 
 $lines | Set-Content -Path photos_list.js
-Write-Host "Done. Thumbnails generated and photos_list.js updated, newest hike first."
+Write-Host "Done. Sorted by date taken, thumbnails generated, photos_list.js updated."
