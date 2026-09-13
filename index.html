@@ -17,18 +17,14 @@
     color: var(--fg);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
-  header {
-    padding: 24px 20px 8px;
+  section {
+    padding: 8px 0 12px;
   }
-  h1 {
+  h2 {
     margin: 0;
-    font-size: 1.4rem;
+    padding: 16px 20px 0;
+    font-size: 1.2rem;
     font-weight: 600;
-  }
-  .count {
-    color: #999;
-    font-size: 0.9rem;
-    margin-top: 4px;
   }
   .grid {
     display: grid;
@@ -115,12 +111,7 @@
 </head>
 <body>
 
-<header>
-  <h1>Hikes</h1>
-  <div class="count" id="count"></div>
-</header>
-
-<div class="grid" id="grid"></div>
+<div id="hikes"></div>
 
 <div class="lightbox" id="lightbox">
   <button class="lb-btn lb-close" id="lbClose">&times;</button>
@@ -129,63 +120,67 @@
   <button class="lb-btn lb-next" id="lbNext">&#10095;</button>
 </div>
 
+<script src="photos_list.js"></script>
 <script>
-// ---- ADD YOUR PHOTOS HERE ----
-// Just add the filename of each photo you drop in this folder.
-// Any order is fine, this is the order they'll show up in.
-const photos = [
-  "20260910_201546.jpg", 
-  "20260911_123219.jpg", 
-  "20260911_132542.jpg", 
-  "IMG_20260911_113235.jpg", 
-  "IMG_20260911_121730.jpg", 
-];
-// -------------------------------
-
-const grid = document.getElementById('grid');
-const countEl = document.getElementById('count');
+const hikesEl = document.getElementById('hikes');
 const lightbox = document.getElementById('lightbox');
 const lbImg = document.getElementById('lbImg');
-let current = 0;
+let currentHike = 0;
+let currentPhoto = 0;
 
-if (photos.length === 0) {
-  grid.innerHTML = '';
-  document.querySelector('header').insertAdjacentHTML('afterend', `
+if (hikes.length === 0) {
+  hikesEl.innerHTML = `
     <div class="missing">
-      No photos listed yet. Open <code>index.html</code>, find the
-      <code>photos</code> list near the bottom of the script, and add
-      your filenames there, e.g. <code>"trail-summit.jpeg"</code>.
+      No hikes listed yet. Open <code>index.html</code>, find the
+      <code>hikes</code> list near the bottom of the script, and add
+      an entry for each folder of photos, e.g.
+      <code>{ title: "Slieve Donard", photos: ["Slieve Donard/1.jpg"] }</code>.
     </div>
-  `);
+  `;
 } else {
-  countEl.textContent = photos.length + (photos.length === 1 ? ' photo' : ' photos');
-  photos.forEach((file, i) => {
-    const img = document.createElement('img');
-    img.src = file;
-    img.loading = 'lazy';
-    img.alt = file;
-    img.addEventListener('click', () => openLightbox(i));
-    grid.appendChild(img);
+  hikes.forEach((hike, hIndex) => {
+    const section = document.createElement('section');
+
+    const h2 = document.createElement('h2');
+    h2.textContent = hike.title;
+    section.appendChild(h2);
+
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+    hike.photos.forEach((file, pIndex) => {
+      const img = document.createElement('img');
+      img.src = file;
+      img.loading = 'lazy';
+      img.alt = file;
+      img.addEventListener('click', () => openLightbox(hIndex, pIndex));
+      grid.appendChild(img);
+    });
+    section.appendChild(grid);
+
+    hikesEl.appendChild(section);
   });
 }
 
-function openLightbox(i) {
-  current = i;
+function openLightbox(hIndex, pIndex) {
+  currentHike = hIndex;
+  currentPhoto = pIndex;
   showPhoto();
   lightbox.classList.add('open');
 }
 
 function showPhoto() {
-  lbImg.src = photos[current];
+  lbImg.src = hikes[currentHike].photos[currentPhoto];
 }
 
 function next() {
-  current = (current + 1) % photos.length;
+  const photos = hikes[currentHike].photos;
+  currentPhoto = (currentPhoto + 1) % photos.length;
   showPhoto();
 }
 
 function prev() {
-  current = (current - 1 + photos.length) % photos.length;
+  const photos = hikes[currentHike].photos;
+  currentPhoto = (currentPhoto - 1 + photos.length) % photos.length;
   showPhoto();
 }
 
