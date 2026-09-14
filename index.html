@@ -74,6 +74,10 @@
     max-height: 100vh;
     object-fit: contain;
   }
+  .lb-loading {
+    color: #999;
+    font-size: 1rem;
+  }
   .lb-btn {
     position: absolute;
     top: 0;
@@ -117,6 +121,7 @@
   <button class="lb-btn lb-close" id="lbClose">&times;</button>
   <button class="lb-btn lb-prev" id="lbPrev">&#10094;</button>
   <img id="lbImg" src="" alt="">
+  <div class="lb-loading" id="lbLoading">Loading image...</div>
   <button class="lb-btn lb-next" id="lbNext">&#10095;</button>
 </div>
 
@@ -125,6 +130,7 @@
 const hikesEl = document.getElementById('hikes');
 const lightbox = document.getElementById('lightbox');
 const lbImg = document.getElementById('lbImg');
+const lbLoading = document.getElementById('lbLoading');
 let currentHike = 0;
 let currentPhoto = 0;
 
@@ -169,8 +175,15 @@ function openLightbox(hIndex, pIndex) {
 }
 
 function showPhoto() {
+  lbImg.style.display = 'none';
+  lbLoading.style.display = 'block';
   lbImg.src = hikes[currentHike].photos[currentPhoto].full;
 }
+
+lbImg.addEventListener('load', () => {
+  lbLoading.style.display = 'none';
+  lbImg.style.display = 'block';
+});
 
 function next() {
   const photos = hikes[currentHike].photos;
